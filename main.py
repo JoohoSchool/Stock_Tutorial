@@ -28,7 +28,7 @@ for r in range(0,10):
 # DB 저장
 
 from sqlalchemy import create_engine
-con = create_engine('mysql+pymysql://root:django@3.34.50.194:54621/stock')
+con = create_engine('mysql+pymysql://root:django@13.125.114.237:54378/stock')
 kospi.to_sql('kospi',con, if_exists='replace')
 kosdaq.to_sql('kosdaq', con, if_exists = 'replace')
 
