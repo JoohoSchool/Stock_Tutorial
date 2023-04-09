@@ -15,11 +15,11 @@ def korea_stock(code, start, end):
     return df
 
 def kospi_list():
-    kospi = pd.read_csv('data/KOSPI-20230319.csv', encoding = 'cp949')
-    kospi['종목코드'] = kospi['종목코드'].astype('str') #문자로 변경
+    kospi = pd.read_csv('data/KOSPI-20230319.csv', encoding = 'cp949',
+                        dtype = {'종목코드':'str'})
     return kospi
 
 def kosdaq_list():
-    kosdaq = pd.read_csv('data/KOSDAQ-20230319.csv', encoding = 'cp949')
-    kosdaq['종목코드'] = kosdaq['종목코드'].astype('str')
+    kosdaq = pd.read_csv('data/KOSDAQ-20230319.csv', encoding = 'cp949',
+                         dtype = {'종목코드':'str'})
     return kosdaq
