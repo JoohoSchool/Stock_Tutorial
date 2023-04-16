@@ -42,3 +42,5 @@ import pandas as pd
 query = 'SELECT 회사명, 종목코드 FROM stock.kospi;'
 df = pd.read_sql(query, con)
 
+# 
+

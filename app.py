@@ -2,11 +2,24 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import db
+import DataLoader as dl
 
 st.title('Korean Stock Market')
 
 code = st.text_input('Stock Code')
 st.write('입력한 종목 코드는', code)
+
+name_df = db.info_name2()
+
+# 빈칸 한개 추가하는 것 나중에 추가
+name = st.selectbox('회사명을 입력하세요. ',name_df)
+st.write(name)
+
+code = name.split(':')[1].replace(' ','')  
+st.write(code)
+
+price_df = dl.korea_stock(code, '2020-01-01', '2023-04-16')
+st.line_chart(price_df['Close'])
 
 if code!='':
     

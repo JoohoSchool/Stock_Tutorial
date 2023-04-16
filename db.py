@@ -13,5 +13,24 @@ def info(code):  # 코드 입력 하면 정보가져오기
     df = pd.read_sql(query, con)
     return df
 
+def info_name():  # 코드 입력 하면 정보가져오기
+    query = '''
+            SELECT 회사명, 종목코드 FROM stock.info
+            order by 회사명
+            '''
+    print(query)
+    df = pd.read_sql(query, con)
+    return df
+
+def info_name2():  # 코드 입력 하면 정보가져오기
+    query = '''
+            SELECT 회사명, 종목코드 FROM stock.info
+            order by 회사명
+            '''
+    print(query)
+    df = pd.read_sql(query, con)
+    
+    return df['회사명'] + ' : ' + df['종목코드']
+
 if __name__ == '__main__':  # 여기서 실행될 때
     pass
