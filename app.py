@@ -21,6 +21,10 @@ st.write(code)
 price_df = dl.korea_stock(code, '2020-01-01', '2023-04-16')
 st.line_chart(price_df['Close'])
 
+fig = db.forecast(code)  # 예측 차트 생성
+st.pyplot(fig)  # 차트 출력
+
+
 if code!='':
     
     try: # 아래 실행
@@ -30,6 +34,7 @@ if code!='':
     else: # 에러 안나면 여기  
         if(len(df)==1):      # 값이 제대로 나온 경우
             st.subheader(df['회사명'][0])
+            
         else:   # 종목이 검색 안 되는 경우
             st.write('없는 종목입니다. ')
  
