@@ -24,6 +24,18 @@ st.line_chart(price_df['Close'])
 fig = forecast.forecast(code)  # 예측 차트 생성
 st.pyplot(fig)  # 차트 출력
 
+yearly, quater = db.finance(code)
+st.write(yearly)
+st.write(quater)
+
+peer = db.peer(code)
+st.write(peer)
+
+# finance = db.finance(code)
+# st.write(finance[0])
+# st.write(finance[1])
+
+
 
 if code!='':
     

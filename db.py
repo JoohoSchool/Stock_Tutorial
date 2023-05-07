@@ -59,6 +59,29 @@ def kosdaq_list():
                          dtype = {'종목코드':'str'})
     return kosdaq
 
+### 재무 정보
+
+def finance(code):
+    df = pd.read_html(f'https://finance.naver.com/item/main.naver?code={code}',
+                      encoding = 'cp949')
+    finance_df = df[3]
+
+    finance_df = finance_df.droplevel([0,2],axis=1)
+    finance_df.index = finance_df.iloc[:,0]
+    # finance_df = finance_df.drop('주요재무정보',axis=1)
+    yearly = finance_df.iloc[:,:5]
+    quarterly = finance_df.iloc[:,5:]
+    
+    return yearly, quarterly
+
+def peer(code):
+    df = pd.read_html(f'https://finance.naver.com/item/main.naver?code={code}',
+                      encoding = 'cp949')
+    peer_df = df[4]  # 경쟁사 정보  
+    peer_df = peer_df.set_index('종목명') #인덱스 지정
+    
+    return peer_df
+    
 ### 테스트
-# info('005930')
+#df = finance('450140')
 

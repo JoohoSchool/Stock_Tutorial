@@ -2,23 +2,17 @@ import pandas as pd
 
 df = pd.read_html('https://finance.naver.com/item/main.naver?code=065350',
                   encoding = 'cp949')
-finance_df = df[3]
+finance_df = df[3]  # 재무정보 선택
 
-# 연간_매출액 = finance_df.iloc[0,1:5]  
-# 연간_영업이익 = finance_df.iloc[1,1:5]
-
+finance_df = finance_df.droplevel([0, 2], axis=1) # MultiIndex 불필요한 정보 삭제
+finance_df.index = finance_df.iloc[:,0] # 행인덱스 사용 지정
+finance_df = finance_df.drop('주요재무정보',axis=1) # 복사된 컬럼 삭제
 yearly =  finance_df.iloc[:,:5]  # 연간 데이터 가져오기
-yearly.index = finance_df.iloc[:,0] # 행인덱스 사용 지정
-yearly.columns = range(5) # 컬럼명 새로 생성
-yearly = yearly.drop(0, axis=1) # 0번째 컬럼 삭제
-yearly.columns = [2020,2021,2022,2023] # 컬럼명 새로 넣기
+quaterly = finance_df.iloc[:,5:]  # 분기 데이터 가져오기
 
-print(yearly.loc['매출액',2020])  # 특정 요소 가져오기
-print(yearly.loc['영업이익',2022])
+print(yearly.loc['매출액', '2020.12'])
 
-
-### 분기 데이터 df 만들기
-quaterly = finance_df.iloc[:,5:]
-
-
+# 경쟁사 정보
+peer_df = df[4]  # 재무정보 선택
+peer_df = peer_df.set_index('종목명') #인덱스 지정
 
