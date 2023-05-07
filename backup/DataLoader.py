@@ -1,8 +1,4 @@
-# pandas 데이터리더
-# https://pydata.github.io/pandas-datareader/stable/index.html
 
-# 상장기업 목록, 엑셀다운로드
-# https://kind.krx.co.kr/corpgeneral/corpList.do?method=loadInitPage
 
 
 import pandas_datareader.data as web
