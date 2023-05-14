@@ -1,0 +1,4 @@
+SQLAlchemy 
+pandas_datareader
+pymysql
+prophet
