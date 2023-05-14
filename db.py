@@ -10,7 +10,6 @@ address = st.secrets['DB']['address']
 port = st.secrets['DB']['port']
 schema = st.secrets['DB']['schema']
 
-
 con = create_engine(f'mysql+pymysql://{username}:{pw}@{address}:{port}/{schema}')
 
 ### MySQL에서 가져오기
