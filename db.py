@@ -2,8 +2,16 @@
 import pandas as pd
 from sqlalchemy import create_engine  # 데이터베이스 사용 라이브러리
 import pandas_datareader.data as web
+import streamlit as st
 
-con = create_engine('mysql+pymysql://root:django@15.165.146.109:51126/stock')
+username = st.secrets['DB']['username']
+pw = st.secrets['DB']['pw']
+address = st.secrets['DB']['address']
+port = st.secrets['DB']['port']
+schema = st.secrets['DB']['schema']
+
+
+con = create_engine(f'mysql+pymysql://{username}:{pw}@{address}:{port}/{schema}')
 
 ### MySQL에서 가져오기
 def info(code):  # 코드 입력 하면 정보가져오기
