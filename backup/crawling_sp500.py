@@ -14,3 +14,8 @@ con = create_engine('mysql+pymysql://root:django@15.165.146.109:51126/stock')
 
 sp500_companies.to_sql('sp500', con, if_exists = 'replace', index=False)
 # 나오는 숫자는 rowcount임
+
+
+# 재무데이터 가져오기
+df = pd.read_html('https://www.google.com/finance/quote/AAPL:NASDAQ')
+

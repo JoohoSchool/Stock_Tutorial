@@ -22,4 +22,3 @@ def get_sp500_list():
     sp500_companies.to_sql('sp500', con, if_exists = 'replace', index=False)
     print('sp500이 업데이트 되었습니다.')
     
-    
