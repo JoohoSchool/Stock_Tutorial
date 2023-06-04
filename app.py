@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import db
+import db_us
 import forecast
 
 # 사이드바 선택창
@@ -55,5 +56,18 @@ if country =='Korea':
                 
 elif country=='USA':
     st.title('USA Stock Market')
-    st.header('Under Construction')
- 
+    
+    name_df = db_us.info_name_code()
+    
+    # 빈칸 한개 추가하는 것 나중에 추가
+    name = st.selectbox('회사명을 입력하세요. ',name_df)
+    st.write(name)
+    
+    code = name.split(':')[1].replace(' ','')  
+    st.write(code)
+    
+    df = db_us.info(code)
+    st.write(df)
+    
+    price_df = db_us.us_stock(code)
+    st.line_chart(price_df['Close'])
