@@ -24,3 +24,4 @@ for row in rows:
         print(cell.text.strip())
     print()
     
+# 컬럼 제목 가져오기
