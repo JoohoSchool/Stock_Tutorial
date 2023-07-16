@@ -46,10 +46,27 @@ stock1 = download_price('065350', '20230101', '20230707')
 rtn = stock1['Close'].iloc[-1]/stock1['Close'][0] - 1
 
 # 1종목의 수익률 계산하는 거 함수로 만들기
+def rtn(code, start, end):
+    price = download_price(code, start, end)
+    rtn = price['Close'].iloc[-1]/price['Close'][0] - 1
+    return rtn
 
 # 여러종목 수익률 계산하는 함수 만들기
+def rtns(codes, start, end):
+    code_rtns = {}
+    for code in codes:
+        print(code)
+        수익률 =  rtn(code, start, end)
+        code_rtns[code]=수익률
+    return code_rtns
+
+codes = get_codes()
+period_rtns =  rtns(codes, '20230101', '20230707')   
+print(period_rtns)
 
 # 10개 종목 수익률 순서대로 출력
+
+
 
 
 
